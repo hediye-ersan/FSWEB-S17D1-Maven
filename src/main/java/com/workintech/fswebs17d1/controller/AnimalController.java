@@ -2,6 +2,7 @@ package com.workintech.fswebs17d1.controller;
 
 import com.workintech.fswebs17d1.entity.Animal;
 import jakarta.websocket.server.PathParam;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -9,9 +10,21 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/workintech/animal")
+@RequestMapping(path = "/workintech/animal")
 public class AnimalController {
     private final Map<Integer, Animal> animals = new HashMap<>();
+
+    @Value("${project.developer.fullname}")
+    private String developerName;
+
+    @Value("${course.name}")
+    private String courseName;
+
+    @GetMapping("/values")
+    public String getValues(){
+        return developerName + "---" + courseName;
+    }
+
 
     @GetMapping
     public List<Animal> listAnimal(){
