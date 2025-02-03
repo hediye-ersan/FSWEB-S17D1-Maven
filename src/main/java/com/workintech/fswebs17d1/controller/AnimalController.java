@@ -14,7 +14,7 @@ public class AnimalController {
     private final Map<Integer, Animal> animals = new HashMap<>();
 
     @GetMapping
-    public List<Animal> listAll(){
+    public List<Animal> listAnimal(){
         return animals.values().stream().toList();
     }
 
